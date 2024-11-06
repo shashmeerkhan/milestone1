@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Static Resume Builder by Shahmeer Khan</h1>
+    <div class="pis">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+
+    <form id="resumeform">
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="img">Select your Image:</label>
+        <input type="file" id="img" name="img" required />
+      </fieldset>
+
+      <button type="button" id="togglebtn">More</button>
+      <section id="toggle" style="display: none">
+        <fieldset>
+          <legend>Education</legend>
+          <div id="education-container">
+            <label for="education">Experience:</label>
+            <textarea
+              name="education"
+              class="education-field"
+              rows="2"
+              required
+            ></textarea>
+          </div>
+          <button type="button" id="add-education">Add Education</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Experience</legend>
+          <div id="experience-container">
+            <label for="experience">Experience:</label>
+            <textarea
+              name="experience"
+              class="experience-field"
+              rows="2"
+              required
+            ></textarea>
+          </div>
+          <button type="button" id="add-experience">Add Experience</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Skills</legend>
+          <div id="skills-container">
+            <label for="skills">Skills:</label>
+            <textarea
+              name="skills"
+              class="skills-field"
+              rows="2"
+              required
+            ></textarea>
+          </div>
+          <button type="button" id="add-skills">Add skills</button>
+        </fieldset>
+
+        <button class="btn" type="submit">Generate Resume</button>
+      </section>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
