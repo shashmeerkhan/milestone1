@@ -2,13 +2,13 @@
 const selecttoggle = document.getElementById("toggle");
 const selecttogglebtn = document.getElementById("togglebtn");
 
-function Visibility() {
+function toggleVisibility() {
   if (selecttoggle) {
     selecttoggle.style.display =
       selecttoggle.style.display === "none" ? "block" : "none";
   }
 }
-selecttogglebtn?.addEventListener("click", Visibility);
+selecttogglebtn?.addEventListener("click", toggleVisibility);
 
 // Adding multiple experiences
 const experienceContainer = document.getElementById("experience-container");
@@ -52,37 +52,29 @@ function addSkills() {
 }
 addSkillsButton.addEventListener("click", addSkills);
 
-// Grabbing the form and resume elements
+// Prevent default form submission and dynamically display the resume data
 const resumeForm = document.getElementById("resumeform");
-const resumeSection = document.getElementById("resume");
 
-// Prevent default form submission and dynamically fill the resume
+resumeForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Example resume preview - add your elements here to display resume content
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  console.log(`Name: ${name}`);
+  console.log(`Email: ${email}`);
+  console.log(`Phone: ${phone}`);
+  // Populate resume preview elements with these values, or use innerHTML to set text
+});
+
+// Project Name Validation (if needed separately)
 function isValidProjectName(name) {
-  // Check if the name is within the allowed length
-  if (name.length > 100) {
-    return "Error: Project name exceeds 100 characters.";
-  }
-
-  // Define the allowed pattern and invalid sequence
+  if (name.length > 100) return "Error: Project name exceeds 100 characters.";
   const pattern = /^[a-z0-9._-]+$/;
   const invalidSequence = '---';
-
-  // Check if the name matches the allowed characters
-  if (!pattern.test(name)) {
-    return "Error: Project name contains invalid characters. Use lowercase letters, digits, '.', '_', and '-'.";
-  }
-
-  // Check if the name contains the restricted sequence '---'
-  if (name.includes(invalidSequence)) {
-    return "Error: Project name contains the sequence '---', which is not allowed.";
-  }
-
+  if (!pattern.test(name)) return "Error: Invalid characters in project name.";
+  if (name.includes(invalidSequence)) return "Error: Contains '---'.";
   return "Valid project name!";
 }
-
-// Example usage
-console.log(isValidProjectName("valid_project-name"));     // "Valid project name!"
-console.log(isValidProjectName("invalid---name"));         // "Error: Project name contains the sequence '---', which is not allowed."
-console.log(isValidProjectName("Another.Project123"));     // "Valid project name!"
-console.log(isValidProjectName("UPPERCASE"));              // "Error: Project name contains invalid characters. Use lowercase letters, digits, '.', '_', and '-'."
-console.log(isValidProjectName("waytoolong".repeat(10)));  // "Error: Project name exceeds 100 characters."
